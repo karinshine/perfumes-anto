@@ -1,0 +1,23 @@
+name: Publicar en Firebase (antoperfumes.web.app)
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Revisar clave de Firebase
+        id: check
+        env:
+          KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          if [ -n "$KEY" ]; then echo "ok=true" >> "$GITHUB_OUTPUT"; else echo "Falta el secreto FIREBASE_SERVICE_ACCOUNT"; fi
+      - if: steps.check.outputs.ok == 'true'
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: ${{ vars.FIREBASE_PROJECT_ID || 'antoperfumes' }}
+          channelId: live
