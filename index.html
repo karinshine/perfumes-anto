@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perfumes Anto · El rincón del aroma</title>
+<meta name="description" content="Perfumes Anto, el rincón del aroma en Lavalle, Mendoza. Perfumes de mujer, hombre y niños. Pedidos por WhatsApp.">
+<meta property="og:title" content="Perfumes Anto · El rincón del aroma">
+<meta property="og:description" content="Perfumes en Lavalle, Mendoza. Envío gratis en Lavalle.">
+<meta property="og:image" content="img/anto-yara.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+/* Layout: bandas de color pleno que se alternan, con ramos de flores dibujados que desbordan los bordes; letras grandes y redondas */
+:root {
+  color-scheme: light;
+  --bg: #fffaf3;
+  --ink: #2a1838;
+  --soft: #5b4a66;
+  --pink: #e8327c;
+  --pink-l: #ffd6e6;
+  --orange: #ff8a2b;
+  --yellow: #ffc93c;
+  --yellow-l: #fff1c2;
+  --leaf: #2fa66a;
+  --leaf-l: #d6f5e3;
+  --lilac: #8a5cf6;
+  --lilac-l: #ece4ff;
+  --wa: #1f9d55;
+  --display: "Baloo 2", "Arial Rounded MT Bold", "Trebuchet MS", sans-serif;
+  --body: "Nunito", "Segoe UI", Arial, sans-serif;
+}
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 1.15rem; line-height: 1.6 }
+.wrap { max-width: 1140px; margin-inline: auto; padding-inline: 20px }
+h1, h2, h3 { font-family: var(--display); font-weight: 800; line-height: 1.05; margin: 0; text-wrap: balance }
+h2 { font-size: clamp(2.2rem, 5.5vw, 3.4rem) }
+h3 { font-size: 1.6rem; font-weight: 700 }
+p { margin: 0 }
+a { color: inherit }
+:focus-visible { outline: 3px solid var(--lilac); outline-offset: 3px }
+.flowers { position: absolute; pointer-events: none }
+.flowers svg { display: block; width: 100%; height: auto }
+
+/* Top bar */
+.promo { background: var(--ink); color: #fff; text-align: center; font-weight: 700; padding: 10px 16px; font-size: 1rem }
+.promo b { color: var(--yellow) }
+nav { background: var(--bg); position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; border-bottom: 3px solid var(--pink-l) }
+nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px }
+.logo { font-family: var(--display); font-weight: 800; font-size: 1.9rem; text-decoration: none; color: var(--pink); display: flex; align-items: center; gap: 8px }
+.logo span { color: var(--ink) }
+.links { display: flex; gap: 8px; flex-wrap: wrap }
+.links a { text-decoration: none; font-weight: 700; padding: 8px 16px; border-radius: 999px; font-size: 1.02rem }
+.links a:hover { background: var(--pink-l) }
+@media (max-width: 720px) { .links { display: none } }
+
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 28px; border-radius: 999px; font-weight: 800; font-size: 1.15rem; text-decoration: none; border: 3px solid var(--ink); transition: transform .15s }
+.btn:hover { transform: translateY(-2px) }
+.btn.pink { background: var(--pink); color: #fff; border-color: var(--pink) }
+.btn.wa { background: var(--wa); color: #fff; border-color: var(--wa) }
+.btn.white { background: #fff; color: var(--ink) }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; background: var(--pink-l); padding-block: 56px 80px }
+.hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1.1fr 1fr; gap: 32px; align-items: center }
+.hero-grid > * { min-width: 0 }
+.hero h1 { font-size: clamp(3rem, 8.5vw, 5.6rem); color: var(--ink) }
+.hero h1 em { font-style: normal; color: var(--pink) }
+.hero p { font-size: 1.3rem; color: var(--soft); margin-top: 18px; max-width: 30ch; font-weight: 600 }
+.hero .ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px }
+.photo { position: relative; aspect-ratio: 4 / 5; max-width: 100%; border-radius: 40% 40% 28px 28px; overflow: hidden; border: 6px solid #fff; box-shadow: 0 18px 40px rgba(232,50,124,.25) }
+.photo svg { width: 100%; height: 100%; display: block }
+.photo .label { position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); width: max-content; max-width: calc(100% - 24px); background: #fff; color: var(--ink); font-weight: 700; font-size: .85rem; padding: 6px 14px; border-radius: 999px; text-align: center }
+.hero .f1 { width: 260px; left: -60px; bottom: -70px }
+.hero .f2 { width: 220px; right: -50px; top: -40px }
+@media (max-width: 820px) { .hero-grid { grid-template-columns: 1fr } .photo { max-width: 420px; margin-inline: auto; width: 100% } .hero .f2 { width: 150px } .hero .f1 { width: 180px } }
+
+/* Categories */
+section { padding-block: 72px; position: relative }
+.center { text-align: center }
+.center p.sub { color: var(--soft); max-width: 46ch; margin: 14px auto 0; font-weight: 600 }
+.cats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-top: 40px }
+@media (max-width: 860px) { .cats { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+.cat { border-radius: 28px; padding: 26px 20px; text-align: center; text-decoration: none; display: grid; gap: 10px; justify-items: center; transition: transform .15s }
+.cat:hover { transform: translateY(-4px) rotate(-1deg) }
+.cat .ico { width: 84px; height: 84px }
+.cat b { font-family: var(--display); font-size: 1.6rem; line-height: 1 }
+.cat span { font-size: 1rem; color: var(--soft); font-weight: 600 }
+
+/* Products */
+.products { background: var(--yellow-l) }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 40px }
+@media (max-width: 900px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+@media (max-width: 560px) { .grid { grid-template-columns: 1fr } }
+.card { background: #fff; border-radius: 28px; padding: 18px; display: grid; gap: 14px; box-shadow: 0 6px 0 rgba(42,24,56,.08) }
+.card .pic { border-radius: 20px; aspect-ratio: 1 / 1; overflow: hidden }
+.card .pic svg, .card .pic img { width: 100%; height: 100%; display: block; object-fit: cover }
+[hidden] { display: none !important }
+.filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 24px }
+.filters button { font: inherit; font-weight: 800; font-size: 1.05rem; padding: 10px 22px; border-radius: 999px; border: 3px solid var(--ink); background: #fff; color: var(--ink); cursor: pointer }
+.filters button[aria-pressed="true"] { background: var(--ink); color: #fff }
+.empty { text-align: center; font-weight: 700; font-size: 1.2rem; margin-top: 32px; color: var(--soft) }
+.brand { font-size: .9rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: var(--soft) }
+.card .row { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap }
+.chip { font-size: .85rem; font-weight: 800; padding: 4px 12px; border-radius: 999px; letter-spacing: .02em }
+.price { font-family: var(--display); font-size: 1.7rem; font-weight: 800; font-variant-numeric: tabular-nums }
+.card p { color: var(--soft); font-size: 1.02rem }
+.sizes { display: flex; gap: 8px; flex-wrap: wrap }
+.sizes button { font: inherit; font-weight: 800; font-size: .95rem; padding: 8px 14px; border-radius: 999px; border: 2px solid var(--ink); background: #fff; color: var(--ink); cursor: pointer }
+.sizes button[aria-pressed="true"] { background: var(--ink); color: #fff }
+.card .notes { margin-top: 4px; font-style: italic; line-height: 1.35 }
+.card .btn { justify-content: center; padding: 12px 20px; font-size: 1.05rem }
+
+/* Mother's day */
+.mama { background: var(--pink); color: #fff; overflow: hidden }
+.mama .wrap { position: relative; z-index: 2; display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: center }
+.mama .wrap > * { min-width: 0 }
+.mama h2 { color: #fff }
+.mama p { font-size: 1.25rem; margin-top: 14px; font-weight: 600; max-width: 40ch }
+.mama .date { display: inline-block; background: var(--yellow); color: var(--ink); font-weight: 800; padding: 6px 16px; border-radius: 999px; margin-bottom: 16px; font-size: 1.05rem }
+.mama .f3 { width: 300px; right: -40px; bottom: -80px; opacity: .95 }
+.mama .ctas { margin-top: 26px; display: flex; gap: 14px; flex-wrap: wrap }
+@media (max-width: 820px) { .mama .wrap { grid-template-columns: 1fr } .mama .f3 { width: 180px } }
+
+/* About */
+.about-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center }
+.about-grid > * { min-width: 0 }
+.about-grid .photo { border-radius: 28px 28px 40% 40% }
+.about p { margin-top: 16px; color: var(--soft); font-weight: 600 }
+.badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px }
+.badges span { background: var(--leaf-l); color: #17643d; font-weight: 800; padding: 8px 16px; border-radius: 999px; font-size: 1rem }
+@media (max-width: 820px) { .about-grid { grid-template-columns: 1fr } }
+
+/* Contact */
+.contact { background: var(--lilac-l) }
+.contact-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-top: 36px }
+@media (max-width: 980px) { .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+@media (max-width: 560px) { .contact-grid { grid-template-columns: 1fr } }
+.box b a { text-decoration: none; color: var(--pink); overflow-wrap: anywhere }
+.slogan { font-family: var(--display); font-weight: 700; font-size: 1.4rem; color: var(--pink); background: #fff; display: inline-block; padding: 4px 18px; border-radius: 999px; margin-bottom: 14px }
+.box { background: #fff; border-radius: 24px; padding: 24px; display: grid; gap: 6px; align-content: start }
+.box small { font-weight: 800; text-transform: uppercase; letter-spacing: .08em; font-size: .85rem; color: var(--lilac) }
+.box b { font-size: 1.3rem; user-select: all }
+.box span { color: var(--soft); font-size: 1rem }
+.box .maps { margin-top: 8px; justify-self: center; background: var(--pink); color: #fff; font-weight: 800; text-decoration: none; padding: 8px 16px; border-radius: 999px }
+.ph { background: var(--yellow-l); border-radius: 6px; padding: 0 6px }
+.contact .ctas { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin-top: 32px }
+footer { background: var(--ink); color: #fff; padding-block: 28px; font-size: 1rem }
+footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px }
+footer em { color: var(--yellow); font-style: normal }
+
+.float-wa { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 20; background: var(--wa); color: #fff; width: 62px; height: 62px; border-radius: 50%; display: grid; place-items: center; box-shadow: 0 8px 20px rgba(0,0,0,.25) }
+
+@media (prefers-reduced-motion: no-preference) {
+  .sway { transform-origin: 50% 100%; animation: sway 5s ease-in-out infinite alternate }
+  @keyframes sway { from { transform: rotate(-2deg) } to { transform: rotate(2deg) } }
+}
+</style>
+
+<div class="promo">🌸 Día de la Madre: <b>domingo 18 de octubre</b> · <b>Envío gratis en Lavalle</b></div>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#inicio"><span data-flower="pink" style="width:34px;display:inline-block"></span>Perfumes <span>Anto</span></a>
+    <div class="links">
+      <a href="#perfumes">Perfumes</a>
+      <a href="#mama">Día de la Madre</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="flowers f1 sway" data-bouquet="a"></div>
+  <div class="flowers f2 sway" data-bouquet="b"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <p class="slogan">El rincón del aroma</p>
+      <h1>Perfumes que te hacen <em>florecer</em></h1>
+      <p>Fragancias para vos y para regalar, en el corazón de Lavalle.</p>
+      <div class="ctas">
+        <a class="btn pink" href="#perfumes">Ver perfumes</a>
+        <a class="btn wa" href="#contacto">Pedir por WhatsApp</a>
+      </div>
+    </div>
+    <div class="photo"><img src="img/anto-yara.jpg" alt="Anto con el perfume Yara de Lattafa" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+  </div>
+</header>
+
+<section id="perfumes">
+  <div class="wrap center">
+    <h2>¿Para quién es?</h2>
+    <p class="sub">Elegí una categoría y te mostramos las fragancias.</p>
+    <div class="cats">
+      <a class="cat" href="#catalogo" data-go="Mujer" style="background:var(--pink-l)"><span class="ico" data-flower="pink"></span><b>Mujer</b><span>Florales y frescos</span></a>
+      <a class="cat" href="#catalogo" data-go="Hombre" style="background:var(--lilac-l)"><span class="ico" data-flower="lilac"></span><b>Hombre</b><span>Amaderados y cítricos</span></a>
+      <a class="cat" href="#catalogo" data-go="Niños" style="background:var(--leaf-l)"><span class="ico" data-flower="leaf"></span><b>Niños</b><span>Suaves y divertidos</span></a>
+      <a class="cat" href="#mama" style="background:var(--yellow-l)"><span class="ico" data-flower="yellow"></span><b>Regalos</b><span>Sets y combos</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="catalogo">
+  <div class="wrap">
+    <div class="center">
+      <h2>Nuestro catálogo</h2>
+      <p class="sub">Tocá "Lo quiero" y te respondemos por WhatsApp con la disponibilidad.</p>
+      <div class="filters" role="group" aria-label="Filtrar perfumes">
+        <button type="button" id="f-todos" data-filter="Todos" aria-pressed="true">Todos</button>
+        <button type="button" id="f-mujer" data-filter="Mujer" aria-pressed="false">Mujer</button>
+        <button type="button" id="f-hombre" data-filter="Hombre" aria-pressed="false">Hombre</button>
+        <button type="button" id="f-ninos" data-filter="Niños" aria-pressed="false">Niños</button>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty" hidden>Muy pronto vas a ver acá los perfumes para niños. ¡Consultanos por WhatsApp!</p>
+  </div>
+</section>
+
+<section class="mama" id="mama">
+  <div class="flowers f3 sway" data-bouquet="c"></div>
+  <div class="wrap">
+    <div>
+      <span class="date">Domingo 18 de octubre</span>
+      <h2>Para mamá, el perfume más lindo</h2>
+      <p>Armamos tu regalo con bolsa, moño y tarjeta para que escribas la dedicatoria. Lo retirás en el local o te lo llevamos.</p>
+      <div class="ctas">
+        <a class="btn white" href="#contacto">Quiero un regalo</a>
+      </div>
+    </div>
+    <div class="photo"><img src="img/madre-altos-limpios.jpg" alt="Mujer con vestido blanco y un perfume en los médanos de Lavalle" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+  </div>
+</section>
+
+<section class="about" id="nosotros">
+  <div class="wrap about-grid">
+    <div class="photo"><img src="img/anto.jpg" alt="Anto, dueña de Perfumes Anto" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block"></div>
+    <div>
+      <h2>Hola, soy Anto 🌼</h2>
+      <p>Perfumes Anto nació en Lavalle con una idea simple: que cada persona encuentre el aroma que la hace sentir bien. Te atiendo yo, te hago probar y te ayudo a elegir sin apuro.</p>
+      <div class="badges">
+        <span>Atención personalizada</span>
+        <span>Envío gratis en Lavalle</span>
+        <span>Regalos listos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap center">
+    <h2>¡Escribinos!</h2>
+    <p class="sub">Hacemos envíos en compras desde $ 80.000, y en Lavalle el envío es gratis.</p>
+    <div class="contact-grid">
+      <div class="box"><small>WhatsApp</small><b>+54 9 261 277-4018</b><span>Respondemos rápido</span></div>
+      <div class="box"><small>Dirección</small><b>Barrio Manantiales</b><span>Manzana E, Casa 16 · Lavalle, Mendoza</span><span><strong>Abierto todos los días hasta las 23 hs</strong></span></div>
+      <div class="box"><small>Instagram</small><b><a href="https://www.instagram.com/el_rincon_del.aroma/" target="_blank" rel="noopener">@el_rincon_del.aroma</a></b><span>Novedades y promos</span></div>
+      <div class="box"><small>Envíos</small><b>Gratis en Lavalle</b><span>A otras zonas, en compras desde $ 80.000</span></div>
+    </div>
+    <div class="ctas">
+      <a class="btn wa" href="https://wa.me/5492612774018" target="_blank" rel="noopener">Abrir WhatsApp</a>
+      <a class="btn white" href="https://maps.app.goo.gl/YGCP3TBfymCYKrUX7" target="_blank" rel="noopener">Cómo llegar</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 <em>Perfumes Anto</em> · El rincón del aroma · Lavalle, Mendoza</span>
+    <span>Prototipo: las fotos se reemplazan por las de Gemini</span>
+  </div>
+</footer>
+
+<a class="float-wa" href="https://wa.me/5492612774018" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
+</a>
+
+<script>
+const C = {
+  pink: ["#e8327c", "#ff8fbf"], lilac: ["#8a5cf6", "#c4b0ff"], leaf: ["#2fa66a", "#ffc93c"],
+  yellow: ["#ffc93c", "#ff8a2b"], orange: ["#ff8a2b", "#ffd36b"], white: ["#ffffff", "#ffc93c"],
+};
+// One daisy-like flower: rotated petals around a center
+function flower(cx, cy, r, color, petals = 7, center) {
+  const [petal, mid] = C[color];
+  let s = "";
+  for (let i = 0; i < petals; i++) {
+    const a = (360 / petals) * i;
+    s += `<ellipse cx="${cx}" cy="${cy - r * .55}" rx="${r * .32}" ry="${r * .55}" fill="${petal}" transform="rotate(${a} ${cx} ${cy})"/>`;
+  }
+  return s + `<circle cx="${cx}" cy="${cy}" r="${r * .28}" fill="${center || mid}"/>`;
+}
+function leaf(x, y, len, angle) {
+  return `<ellipse cx="${x}" cy="${y - len / 2}" rx="${len * .22}" ry="${len / 2}" fill="#2fa66a" transform="rotate(${angle} ${x} ${y})"/>`;
+}
+function stem(x1, y1, x2, y2) {
+  return `<path d="M${x1} ${y1} Q${(x1 + x2) / 2 + 10} ${(y1 + y2) / 2} ${x2} ${y2}" stroke="#2fa66a" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+}
+const bouquets = {
+  a: [["pink", 90, 90, 60, 8], ["yellow", 190, 130, 46, 6], ["lilac", 60, 190, 40, 7], ["orange", 170, 220, 34, 6]],
+  b: [["yellow", 110, 90, 56, 7], ["pink", 50, 170, 40, 8], ["white", 170, 180, 38, 9]],
+  c: [["white", 120, 90, 60, 9], ["yellow", 210, 160, 44, 7], ["orange", 60, 180, 42, 6], ["lilac", 160, 230, 34, 7]],
+};
+document.querySelectorAll("[data-bouquet]").forEach(el => {
+  const list = bouquets[el.dataset.bouquet];
+  let s = "";
+  list.forEach(([c, x, y, r]) => { s += stem(x, y, 140, 300) + leaf(x - 10, y + r + 30, 40, -40) + leaf(x + 10, y + r + 50, 36, 40); });
+  list.forEach(([c, x, y, r, p]) => { s += flower(x, y, r, c, p); });
+  el.innerHTML = `<svg viewBox="0 0 280 300" aria-hidden="true">${s}</svg>`;
+});
+document.querySelectorAll("[data-flower]").forEach(el => {
+  el.innerHTML = `<svg viewBox="0 0 100 100" aria-hidden="true">${flower(50, 50, 46, el.dataset.flower, 8)}</svg>`;
+});
+
+// Bottle drawing for product cards
+function bottle(bg, liquid, cap, flowerColor) {
+  return `<svg viewBox="0 0 300 300" aria-hidden="true">
+    <rect width="300" height="300" fill="${bg}"/>
+    ${flower(52, 60, 44, flowerColor, 8)}${flower(250, 240, 52, "yellow", 7)}${flower(258, 70, 26, "white", 8)}
+    <rect x="128" y="68" width="44" height="36" rx="6" fill="${cap}"/>
+    <rect x="140" y="98" width="20" height="16" fill="${cap}" opacity=".8"/>
+    <rect x="92" y="112" width="116" height="140" rx="26" fill="#ffffff" opacity=".7" stroke="${cap}" stroke-width="4"/>
+    <rect x="100" y="150" width="100" height="94" rx="20" fill="${liquid}"/>
+    <rect x="112" y="170" width="76" height="36" rx="8" fill="#fff"/>
+    <text x="150" y="194" text-anchor="middle" font-family="Baloo 2, sans-serif" font-weight="800" font-size="18" fill="${cap}">ANTO</text>
+  </svg>`;
+}
+const chips = { Mujer: ["#ffd6e6", "#b0185a"], Hombre: ["#ece4ff", "#5a3d8a"], Unisex: ["#fff1c2", "#8a5a00"], "Niños": ["#dff3d6", "#2f6b1f"] };
+const notes = {
+"armaf-odyssey-homme-white": "Pimienta rosa, pomelo, yuzu, notas marinas y ámbar",
+"crystal-bomb": "Rosa, frambuesa, violeta, cedro y vainilla",
+"gatito-rosa-sweetie-meowmi": "Mandarina, pera, gardenia, azahar y vainilla",
+"gatito-violeta": "Frutas, cítricos, flores, vainilla y almizcle",
+"lattafa-yara-violeta": "Orquídea, frutas tropicales, vainilla, sándalo y almizcle",
+"lattafa-yara-rojo": "Orquídea, mandarina, frutas tropicales y vainilla",
+"million-gold": "Pera, rosa, jazmín, ylang-ylang y vainilla",
+"212-heroes": "Pera, jengibre, salvia, almizcle y cuero",
+"dolce-gabbana-q": "Cereza, limón, jazmín y cedro",
+"valentino-donna-born-in-roma": "Grosella negra, jazmín y vainilla",
+"jpg-divine": "Flores blancas, toque salino y merengue",
+"lattafa-yara-rosa": "Orquídea, heliotropo y vainilla",
+"lattafa-yara-moi": "Jazmín, durazno, caramelo y ámbar",
+"olympea": "Vainilla salada, jazmín y mandarina",
+"ch-very-good-girl": "Grosella roja, rosa y vainilla",
+"ch-good-girl": "Almendra, café, jazmín y haba tonka",
+"ch-good-girl-blush": "Peonía, bergamota y vainilla",
+"ch-212-vip-rose": "Champagne rosé, pimienta rosa y durazno",
+"armani-my-way": "Azahar, nardo y vainilla",
+"dkny-be-delicious": "Manzana verde, pepino y magnolia",
+"jpg-scandal": "Miel, gardenia y naranja sanguina",
+"nina-ricci-nina": "Manzana, limón y praliné",
+"moschino-toy-2": "Mandarina, manzana, magnolia y almizcle",
+"moschino-toy-2-bubble-gum": "Chicle, limón, durazno y rosa",
+"givenchy-organza": "Gardenia, nuez moscada y vainilla",
+"ysl-black-opium": "Café, vainilla y flor de naranjo",
+"lattafa-yara-tous": "Mango, coco y vainilla",
+"paco-rabanne-fame": "Mango, jazmín e incienso",
+"jpg-le-male": "Lavanda, menta y vainilla",
+"paco-rabanne-invictus-50": "Pomelo, nota marina, laurel y ámbar",
+"paco-rabanne-invictus-100": "Pomelo, nota marina, laurel y ámbar",
+"versace-eros": "Menta, manzana verde, haba tonka y vainilla",
+"valentino-uomo-born-in-roma": "Salvia, jengibre y vetiver",
+"paco-rabanne-1-million": "Mandarina, canela, cuero y ámbar",
+"lattafa-khamrah": "Canela, dátiles, praliné y vainilla",
+"lattafa-khamrah-qahwa": "Café, cardamomo, praliné y vainilla",
+"ch-la-bomba": "Pitaya, peonía y vainilla",
+"michael-kors-pour-femme": "Rosa, jazmín y maderas suaves",
+"ch-212-vip-black": "Absenta, anís, lavanda y almizcle",
+"ch-212-men-nyc": "Pomelo, jengibre, especias y sándalo",
+"ch-212-sexy-men": "Mandarina, pimienta, cardamomo y vainilla",
+"xerjoff-erba-pura": "Naranja, frutas, vainilla y almizcle blanco",
+"calvin-klein-ck-one": "Bergamota, té verde, papaya y almizcle",
+"kenzo-amour": "Arroz blanco, flor de cerezo, vainilla e incienso",
+"lancome-la-vie-est-belle": "Grosella negra, iris, praliné y vainilla",
+"asad": "Pimienta negra, piña, tabaco y vainilla"
+};
+const products = [
+  { name: "Q", brand: "Dolce & Gabbana", tag: "Mujer", img: "dolce-gabbana-q" },
+  { name: "Born in Roma Donna", brand: "Valentino", tag: "Mujer", img: "valentino-donna-born-in-roma" },
+  { name: "Divine", brand: "Jean Paul Gaultier", tag: "Mujer", img: "jpg-divine" },
+  { name: "212 Heroes", brand: "Carolina Herrera", tag: "Mujer", img: "212-heroes" },
+  { name: "Million Gold", brand: "Paco Rabanne", tag: "Mujer", img: "million-gold" },
+  { name: "Yara (rosa)", brand: "Lattafa", tag: "Mujer", img: "lattafa-yara-rosa" },
+  { name: "Yara (rojo)", brand: "Lattafa", tag: "Mujer", img: "lattafa-yara-rojo" },
+  { name: "Yara Moi (blanco)", brand: "Lattafa", tag: "Mujer", img: "lattafa-yara-moi" },
+  { name: "Yara (violeta)", brand: "Lattafa", tag: "Mujer", img: "lattafa-yara-violeta" },
+  { name: "Olympéa", brand: "Paco Rabanne", tag: "Mujer", img: "olympea" },
+  { name: "Nice", brand: "Meowmi", tag: "Niños", img: "gatito-violeta" },
+  { name: "Sweetie", brand: "Meowmi", tag: "Niños", img: "gatito-rosa-sweetie-meowmi", ml: 100 },
+  { name: "Very Good Girl", brand: "Carolina Herrera", tag: "Mujer", img: "ch-very-good-girl" },
+  { name: "Good Girl", brand: "Carolina Herrera", tag: "Mujer", img: "ch-good-girl" },
+  { name: "Good Girl Blush", brand: "Carolina Herrera", tag: "Mujer", img: "ch-good-girl-blush" },
+  { name: "Good Girl violeta", brand: "Carolina Herrera", tag: "Mujer", img: "ch-good-girl-purple" },
+  { name: "212 VIP Rosé", brand: "Carolina Herrera", tag: "Mujer", img: "ch-212-vip-rose" },
+  { name: "My Way", brand: "Giorgio Armani", tag: "Mujer", img: "armani-my-way" },
+  { name: "Be Delicious", brand: "DKNY", tag: "Mujer", img: "dkny-be-delicious" },
+  { name: "Scandal", brand: "Jean Paul Gaultier", tag: "Mujer", img: "jpg-scandal" },
+  { name: "Nina", brand: "Nina Ricci", tag: "Mujer", img: "nina-ricci-nina" },
+  { name: "Toy 2", brand: "Moschino", tag: "Niños", img: "moschino-toy-2" },
+  { name: "Toy 2 Bubble Gum", brand: "Moschino", tag: "Niños", img: "moschino-toy-2-bubble-gum" },
+  { name: "Organza", brand: "Givenchy", tag: "Mujer", img: "givenchy-organza" },
+  { name: "Black Opium", brand: "Yves Saint Laurent", tag: "Mujer", img: "ysl-black-opium" },
+  { name: "Yara Tous", brand: "Lattafa", tag: "Mujer", img: "lattafa-yara-tous" },
+  { name: "Fame", brand: "Paco Rabanne", tag: "Mujer", img: "paco-rabanne-fame" },
+  { name: "Life is a Crystal Bomb", brand: "LEN Fragrances", tag: "Niños", img: "crystal-bomb" },
+  { name: "Le Male", brand: "Jean Paul Gaultier", tag: "Hombre", img: "jpg-le-male" },
+  { name: "Invictus", brand: "Paco Rabanne", tag: "Hombre", img: "paco-rabanne-invictus-50", ml: 50 },
+  { name: "Invictus", brand: "Paco Rabanne", tag: "Hombre", img: "paco-rabanne-invictus-100", ml: 100 },
+  { name: "Eros", brand: "Versace", tag: "Hombre", img: "versace-eros" },
+  { name: "Born in Roma Uomo", brand: "Valentino", tag: "Hombre", img: "valentino-uomo-born-in-roma" },
+  { name: "1 Million", brand: "Paco Rabanne", tag: "Hombre", img: "paco-rabanne-1-million" },
+  { name: "Odyssey Wild One Gold Edition", brand: "Armaf", tag: "Hombre", img: "armaf-odyssey-wild-one" },
+  { name: "Odyssey Mega", brand: "Armaf", tag: "Hombre", img: "armaf-odyssey-mega" },
+  { name: "Odyssey Homme", brand: "Armaf", tag: "Hombre", img: "armaf-odyssey-homme" },
+  { name: "Odyssey Homme White Edition", brand: "Armaf", tag: "Hombre", img: "armaf-odyssey-homme-white" },
+  { name: "Odyssey Spectra", brand: "Armaf", tag: "Hombre", img: "armaf-odyssey-spectra" },
+  { name: "Party Club Blue", brand: "", tag: "Hombre", img: "party-club-blue" },
+  { name: "Khamrah", brand: "Lattafa", tag: "Unisex", img: "lattafa-khamrah" },
+  { name: "Khamrah Qahwa", brand: "Lattafa", tag: "Unisex", img: "lattafa-khamrah-qahwa" },
+  { name: "La Bomba", brand: "Carolina Herrera", tag: "Mujer", img: "ch-la-bomba" },
+  { name: "Pour Femme", brand: "Michael Kors", tag: "Mujer", img: "michael-kors-pour-femme" },
+  { name: "212 VIP Men Party Fever", brand: "Carolina Herrera", tag: "Hombre", img: "ch-212-vip-men-party-fever" },
+  { name: "212 VIP Black", brand: "Carolina Herrera", tag: "Hombre", img: "ch-212-vip-black" },
+  { name: "212 Men NYC", brand: "Carolina Herrera", tag: "Hombre", img: "ch-212-men-nyc" },
+  { name: "212 Sexy Men", brand: "Carolina Herrera", tag: "Hombre", img: "ch-212-sexy-men" },
+  { name: "Qaed Al Fursan Unlimited", brand: "Lattafa", tag: "Unisex", img: "lattafa-qaed-al-fursan-unlimited" },
+  { name: "Erba Pura", brand: "Xerjoff", tag: "Unisex", img: "xerjoff-erba-pura" },
+  { name: "CK One", brand: "Calvin Klein", tag: "Unisex", img: "calvin-klein-ck-one" },
+  { name: "Amour", brand: "Kenzo", tag: "Mujer", img: "kenzo-amour" },
+  { name: "La Vie est Belle", brand: "Lancôme", tag: "Mujer", img: "lancome-la-vie-est-belle" },
+  { name: "Asad", brand: "Lattafa", tag: "Hombre", img: "asad" },
+  { name: "Asad (verde)", brand: "Lattafa", tag: "Hombre", img: "jessica-twain-megamare-oriental", ml: 100 },
+  { name: "Love Him", brand: "Lattafa", tag: "Niños", img: "love-him" },
+];
+function sizes(p) { return [{ label: (p.ml || 100) + " ml", price: price(p) }, { label: "30 ml", price: "10.000" }, { label: "10 ml", price: "6.500" }]; }
+function waHref(p, z) {
+  const t = "Hola Anto! Quiero consultar por " + (p.brand ? p.brand + " " : "") + p.name + " (" + z.label + ") - $ " + z.price + "\nFoto: " + new URL("img/" + p.img + ".jpg", location.href).href;
+  return "https://wa.me/5492612774018?text=" + encodeURIComponent(t);
+}
+document.getElementById("grid").innerHTML = products.map((p, i) => `
+  <article class="card" data-tag="${p.tag}" data-i="${i}">
+    <div class="pic"><img src="img/${p.img}.jpg" alt="${p.brand} ${p.name}" loading="lazy" width="600" height="600"></div>
+    <div class="row"><span class="chip" style="background:${chips[p.tag][0]};color:${chips[p.tag][1]}">${p.tag}</span><span class="price">$ ${price(p)}</span></div>
+    <div><p class="brand">${p.brand || "&nbsp;"}</p><h3>${p.name}</h3>${notes[p.img] ? `<p class="notes">${notes[p.img]}</p>` : ""}</div>
+    <div class="sizes" role="group" aria-label="Tamaño">${sizes(p).map((z, j) => `<button type="button" data-z="${j}" aria-pressed="${j === 0}">${z.label}</button>`).join("")}</div>
+    <a class="btn wa" href="${waHref(p, sizes(p)[0])}" target="_blank" rel="noopener">Lo quiero</a>
+  </article>`).join("");
+document.getElementById("grid").addEventListener("click", e => {
+  const b = e.target.closest(".sizes button"); if (!b) return;
+  const card = b.closest(".card"), p = products[card.dataset.i], z = sizes(p)[b.dataset.z];
+  card.querySelectorAll(".sizes button").forEach(x => x.setAttribute("aria-pressed", x === b));
+  card.querySelector(".price").textContent = "$ " + z.price;
+  card.querySelector(".wa").href = waHref(p, z);
+});
+
+function price(p) { if (p.tag === "Niños") return "22.000"; return /Yara|Odyssey/.test(p.name) || ["La Bomba", "Qaed Al Fursan Unlimited", "Erba Pura", "Asad (verde)"].includes(p.name) ? "34.000" : "25.000"; }
+function setFilter(f) {
+  let shown = 0;
+  document.querySelectorAll("#grid .card").forEach(c => { const on = f === "Todos" || c.dataset.tag === f || (c.dataset.tag === "Unisex" && f !== "Niños"); c.hidden = !on; if (on) shown++; });
+  document.getElementById("empty").hidden = shown > 0;
+  document.querySelectorAll(".filters button").forEach(b => b.setAttribute("aria-pressed", b.dataset.filter === f));
+}
+document.querySelectorAll(".filters button").forEach(b => b.addEventListener("click", () => setFilter(b.dataset.filter)));
+document.querySelectorAll("[data-go]").forEach(a => a.addEventListener("click", () => setFilter(a.dataset.go)));
+
+// Photo placeholders: soft colorful scenes until real photos arrive
+const scenes = {
+  dunes: ["#ffb3cf", "#ffd6a8", "#ff9a5c", "#e8732f"],
+  plaza: ["#bfe8ff", "#fff1c2", "#7fd19f", "#2fa66a"],
+  algarrobo: ["#ffe0b8", "#ffc98f", "#c98b4f", "#7a5230"],
+};
+document.querySelectorAll("[data-photo]").forEach(el => {
+  const [a, b, c, d] = scenes[el.dataset.photo];
+  const id = "g" + el.dataset.photo;
+  el.innerHTML = `<svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs>
+    <rect width="400" height="500" fill="url(#${id})"/>
+    <circle cx="290" cy="150" r="60" fill="#fff" opacity=".7"/>
+    <path d="M0 340 Q120 290 240 330 T400 310 V500 H0Z" fill="${c}"/>
+    <path d="M0 410 Q140 370 260 410 T400 400 V500 H0Z" fill="${d}"/>
+    ${flower(70, 440, 40, "pink", 8)}${flower(340, 455, 34, "yellow", 7)}${flower(150, 470, 26, "white", 8)}
+  </svg><span class="label">📷 ${el.dataset.label}</span>`;
+});
+</script>
