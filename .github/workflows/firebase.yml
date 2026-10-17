@@ -8,16 +8,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Revisar clave de Firebase
-        id: check
+      - name: Publicar
         env:
           KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
         run: |
-          if [ -n "$KEY" ]; then echo "ok=true" >> "$GITHUB_OUTPUT"; else echo "Falta el secreto FIREBASE_SERVICE_ACCOUNT"; fi
-      - if: steps.check.outputs.ok == 'true'
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-          projectId: ${{ vars.FIREBASE_PROJECT_ID || 'antoperfumes' }}
-          channelId: live
+          if [ -z "$KEY" ]; then echo "Falta el secreto FIREBASE_SERVICE_ACCOUNT"; exit 0; fi
+          printf '%s' "$KEY" > "$RUNNER_TEMP/key.json"
+          if ! PROJECT=$(jq -er .project_id "$RUNNER_TEMP/key.json"); then
+            echo "::error::La llave no es un JSON válido de cuenta de servicio"; exit 1
+          fi
+          echo "::notice::Proyecto Firebase: $PROJECT"
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/key.json"
+          set +e
+          npx -y firebase-tools@latest deploy --only hosting --project "$PROJECT" --non-interactive > out.txt 2>&1
+          code=$?
+          cat out.txt
+          if [ $code -ne 0 ]; then
+            msg=$(grep -iE "error|denied|not found|permission|enable|site" out.txt | tail -6 | tr '\n' ' ')
+            echo "::error::$msg"
+            exit $code
+          fi
+          echo "::notice::$(grep -i 'Hosting URL' out.txt)"
