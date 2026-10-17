@@ -20,7 +20,18 @@ jobs:
           echo "::notice::Proyecto Firebase: $PROJECT"
           export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/key.json"
           set +e
-          npx -y firebase-tools@latest deploy --only hosting --project "$PROJECT" --non-interactive > out.txt 2>&1
+          # Sitio con nombre corto (antoperfumes.web.app); si no se puede, queda el del proyecto
+          SITE=antoperfumes
+          npx -y firebase-tools@latest hosting:sites:get "$SITE" --project "$PROJECT" > /dev/null 2>&1 \
+            || npx -y firebase-tools@latest hosting:sites:create "$SITE" --project "$PROJECT" --non-interactive > site.txt 2>&1
+          if npx -y firebase-tools@latest hosting:sites:get "$SITE" --project "$PROJECT" > /dev/null 2>&1; then
+            jq --arg s "$SITE" '.hosting.site=$s' firebase.json > f.json && mv f.json firebase.json
+            npx -y firebase-tools@latest deploy --only hosting --project "$PROJECT" --non-interactive >> out.txt 2>&1
+            jq 'del(.hosting.site)' firebase.json > f.json && mv f.json firebase.json
+          else
+            echo "::warning::No se pudo crear $SITE.web.app: $(tail -3 site.txt | tr '\n' ' ')"
+          fi
+          npx -y firebase-tools@latest deploy --only hosting --project "$PROJECT" --non-interactive >> out.txt 2>&1
           code=$?
           cat out.txt
           if [ $code -ne 0 ]; then
@@ -28,4 +39,4 @@ jobs:
             echo "::error::$msg"
             exit $code
           fi
-          echo "::notice::$(grep -i 'Hosting URL' out.txt)"
+          echo "::notice::$(grep -i 'Hosting URL' out.txt | tr '\n' ' ')"
