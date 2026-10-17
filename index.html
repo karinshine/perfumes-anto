@@ -120,6 +120,15 @@ section { padding-block: 72px; position: relative }
 .mama p { font-size: 1.25rem; margin-top: 14px; font-weight: 600; max-width: 40ch }
 .mama .date { display: inline-block; background: var(--yellow); color: var(--ink); font-weight: 800; padding: 6px 16px; border-radius: 999px; margin-bottom: 16px; font-size: 1.05rem }
 .mama .f3 { width: 300px; right: -40px; bottom: -80px; opacity: .95 }
+.mama .wrap.gifts { display: block; margin-top: 40px }
+.gifts h3 { color: #fff; font-size: 1.6rem; margin-bottom: 16px }
+.gift-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px }
+.gift { background: #fff; color: var(--ink); border-radius: 28px; overflow: hidden; display: flex; flex-direction: column }
+.gift img { width: 100%; aspect-ratio: 1529 / 688; object-fit: cover; display: block }
+.gift div { padding: 18px 22px 22px; display: flex; flex-direction: column; gap: 12px }
+.gift p { color: var(--ink); font-size: 1.1rem; margin: 0; max-width: none }
+.gift .btn { justify-content: center; padding: 12px 20px; font-size: 1.05rem }
+@media (max-width: 820px) { .gift-grid { grid-template-columns: 1fr } }
 .mama .ctas { margin-top: 26px; display: flex; gap: 14px; flex-wrap: wrap }
 @media (max-width: 820px) { .mama .wrap { grid-template-columns: 1fr } .mama .f3 { width: 180px } }
 
@@ -231,6 +240,13 @@ footer em { color: var(--yellow); font-style: normal }
       </div>
     </div>
     <div class="photo"><img src="img/madre-altos-limpios.jpg" alt="Mujer con vestido blanco y un perfume en los médanos de Lavalle" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+  </div>
+  <div class="wrap gifts">
+    <h3>Regalos armados 🎁</h3>
+    <div class="gift-grid">
+      <article class="gift"><img src="img/regalo-crema-perfume.jpg" alt="Perfume + crema de manos Cute Lover" loading="lazy"><div><p><strong>Perfume + crema de manos Cute Lover</strong><br>Perfume, crema de manos, caja con moño y tarjeta para mamá.</p><a class="btn wa" href="https://wa.me/5492612774018?text=Hola%20Anto%21%20Quiero%20el%20regalo%20para%20mam%C3%A1%3A%20Perfume%20%2B%20crema%20de%20manos%20Cute%20Lover%0AFoto%3A%20https%3A//antoperfumes.web.app/img/regalo-crema-perfume.jpg" target="_blank" rel="noopener">Quiero este regalo</a></div></article>
+      <article class="gift"><img src="img/regalo-lentes-perfume.jpg" alt="Perfume + lentes de sol" loading="lazy"><div><p><strong>Perfume + lentes de sol</strong><br>Perfume, lentes de sol con protección UV y tarjeta para mamá.</p><a class="btn wa" href="https://wa.me/5492612774018?text=Hola%20Anto%21%20Quiero%20el%20regalo%20para%20mam%C3%A1%3A%20Perfume%20%2B%20lentes%20de%20sol%0AFoto%3A%20https%3A//antoperfumes.web.app/img/regalo-lentes-perfume.jpg" target="_blank" rel="noopener">Quiero este regalo</a></div></article>
+    </div>
   </div>
 </section>
 
